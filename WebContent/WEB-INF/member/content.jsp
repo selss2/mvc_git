@@ -18,8 +18,8 @@
 		<li><a href="service/count.jsp">회원수</a></li>
 	</ol>
 	</div>
-	<a href="../index.jsp">
-		<img src="../img/home.png" alt="home" style="width: 30px"/>
+	<a href="${context}/home.do">
+		<img src="${img}/home.png" alt="home" style="width: 30px"/>
 	</a>
 </div>
 
