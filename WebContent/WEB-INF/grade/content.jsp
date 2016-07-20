@@ -7,12 +7,12 @@
 	<h1>성적 관리</h1>
 	<div style="width: 300px;margin: 0 auto;text-align: left;">
 	<ol>
-		<li><a href="service/regist.jsp">등록</a></li>
-		<li><a href="service/update.jsp">수정</a></li>
-		<li><a href="service/delete.jsp">삭제</a></li>
-		<li><a href="service/list.jsp">목록 </a></li>
-		<li><a href="service/count.jsp">카운트</a></li>
-		<li><a href="service/search.jsp">검색 </a></li>
+		<li><a href="${context}/grade/regist.do">등록</a></li>
+		<li><a href="${context}/grade/update.do">수정</a></li>
+		<li><a href="${context}/grade/delete.do">삭제</a></li>
+		<li><a href="${context}/grade/list.do">목록 </a></li>
+		<li><a href="${context}/grade/count.do">카운트</a></li>
+		<li><a href="${context}/grade/search.do">검색 </a></li>
 	</ol>
 	</div>
 	<a href="../index.jsp">

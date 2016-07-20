@@ -46,11 +46,11 @@ div.box{padding-top:50px; margin: 0 auto;width: 600px;text-align: center;}
 }
 
 #nav li a:hover:not(.active) {
-    background-color: #111;
+    background-color: green;
 }
 
 #nav .active {
-    background-color: #4CAF50;
+    background-color: black;
 }
 
 .bottom {
