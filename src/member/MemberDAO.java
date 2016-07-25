@@ -201,6 +201,7 @@ public class MemberDAO {
 				loginOk = true;
 			}
 		}
+		System.out.println("LOGIN_OK ?"+loginOk);
 		return loginOk;
 	}
 	public boolean existId(String id){

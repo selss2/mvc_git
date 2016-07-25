@@ -13,7 +13,8 @@ public class DispatcherServlet {
 			HttpServletResponse response,
 			Command command) throws ServletException, IOException {
 		System.out.println("이동할 페이지 : "+command.getView());
-		request.getRequestDispatcher(command.getView())
+		request
+		.getRequestDispatcher(command.getView())
 		.forward(request, response);
 	}
 }

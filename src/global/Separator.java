@@ -31,9 +31,13 @@ public class Separator {
 		
 		String action = list.contains("action")?
 			request.getParameter("action"):"move";
-		
 		String page = list.contains("page")?
 				request.getParameter("page"):"main";
+		String pageNo = list.contains("pageNo")?
+				request.getParameter("pageNo"):"1";
+		String keyword = list.contains("keyword")?
+				request.getParameter("keyword"):"lostChild";
+				
 				
 		System.out.println("directory:"+directory);		
 		System.out.println("action:"+action);		
