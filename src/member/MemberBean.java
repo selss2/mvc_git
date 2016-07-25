@@ -15,7 +15,8 @@ import java.text.SimpleDateFormat;
 */
 public class MemberBean implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private String id,pw,name,regDate,gender,ssn,profileImg,email; 
+	private String id,pw,name,regDate,gender,ssn,
+		profileImg,email,phone; 
 	private int birth;
 	
 	public MemberBean() {}
@@ -151,11 +152,27 @@ public class MemberBean implements Serializable{
 	public int getBirth() {
 		return birth;
 	}
-
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	/* gender 와 birth setter 는 통합함
+	 public void setGender(String gender) {
+		this.gender = gender;
+	}
+	*/
+	/* gender 와 birth setter 는 통합함
+	public void setBirth(int birth) {
+		this.birth = birth;
+	}
+	*/
+
 	@Override
 	public String toString() {
 		return "학생 [아이디=" + id + ", 비번=****"+ ", 이메일=" + email  + ", 이름=" + name + ", 등록일=" + regDate + ", 성별=" + gender

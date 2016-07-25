@@ -49,7 +49,9 @@ public class MemberController extends HttpServlet {
 			member.setId(request.getParameter("id"));
 			member.setPw(request.getParameter("pw"));
 			member.setName(request.getParameter("name"));
-			member.setSsn(request.getParameter("ssn"));
+			member.setGenderAndBirth(request.getParameter("ssn"));
+			member.setPhone(request.getParameter("phone"));
+			
 			service.regist(member);
 			DispatcherServlet.send(request, response, Separator.command);
 			break;
