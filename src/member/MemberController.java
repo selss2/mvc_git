@@ -2,17 +2,15 @@ package member;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import global.Command;
 import global.DispatcherServlet;
 import global.Separator;
-import sun.rmi.server.Dispatcher;
 
 @WebServlet("/member.do")
 public class MemberController extends HttpServlet {
@@ -20,6 +18,7 @@ public class MemberController extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("=== member 컨트롤러 진입===");
+		HttpSession session = request.getSession();
 		Separator.init(request,response);
 		MemberService service = MemberServiceImpl.getInstance();
 		MemberBean member = new MemberBean();
@@ -28,18 +27,21 @@ public class MemberController extends HttpServlet {
 		case "move":
 			DispatcherServlet.send(request, response, Separator.command);
 			break;
+		case "detail":
+			DispatcherServlet.send(request, response, Separator.command);
+			break;
 		case "login":
 			member.setId(request.getParameter("id"));
 			member.setPw(request.getParameter("pw"));
-			String name = service.login(member);
-			if(name.equals("fail")){
+			member = service.login(member);
+			if(member.getId().equals("fail")){
 				System.out.println("컨트롤러 : 로그인실패");
 				Separator.command.setPage("login");
 				Separator.command.setView();
 			}else{
 				System.out.println("컨트롤러 : 로그인성공");
-			//	member.setName(name);
-				request.setAttribute("name", name);
+				request.setAttribute("user", member);
+				session.setAttribute("user", member);
 				Separator.command.setDirectory("global");
 				Separator.command.setView();
 			}
@@ -50,6 +52,7 @@ public class MemberController extends HttpServlet {
 			member.setPw(request.getParameter("pw"));
 			member.setName(request.getParameter("name"));
 			member.setGenderAndBirth(request.getParameter("ssn"));
+			member.setRegDate();
 			member.setPhone(request.getParameter("phone"));
 			member.setEmail(request.getParameter("email"));
 			if (service.regist(member).equals("fail")) {
@@ -63,11 +66,11 @@ public class MemberController extends HttpServlet {
 			}
 			DispatcherServlet.send(request, response, Separator.command);
 			break;
-		case "detail":
-			service.findById(request.getParameter("id"));
-			DispatcherServlet.send(request, response, Separator.command);
-			break;
+		
 		case "update":
+			member = (MemberBean) session.getAttribute("user");
+			member.setEmail(request.getParameter("email"));
+			member.setPw(request.getParameter("pw"));
 			service.update(member);
 			DispatcherServlet.send(request, response, Separator.command);
 			break;

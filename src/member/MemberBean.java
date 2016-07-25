@@ -117,6 +117,7 @@ public class MemberBean implements Serializable{
 		int ssnGender = (Integer.parseInt(ssnArr[1]));
 		int thisYear = (Integer.parseInt(nowArr[0]));
 		int age = 0;
+		this.ssn = ssn;
 		switch (ssnGender) {
 		case 1: case 5: 
 			this.gender="남"; 

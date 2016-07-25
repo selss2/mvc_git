@@ -47,8 +47,10 @@ public class MemberServiceImpl implements MemberService{
 	public void update(MemberBean mem) {
 		int result = dao.update(mem);
 		if (result == 1) {
-			session = this.findById(mem.getId());
-		} 
+			System.out.println("서비스 수정결과 성공");
+		}else{
+			System.out.println("서비스 수정결과 실패");
+		}
 	}
 	@Override
 	public MemberBean show() {
@@ -97,18 +99,16 @@ public class MemberServiceImpl implements MemberService{
 		return null;
 	}
 	@Override
-	public String login(MemberBean member) {
+	public MemberBean login(MemberBean member) {
 		// 2.로그인
-		String result = "";
 			if (dao.login(member)) {
 				session = dao.findById(member.getId());
-				result = session.getName();
 				accService.map();
 			}else{
-				result = "fail";
+				session.setId("fail");
 			}
-		System.out.println("서비스로그인결과?"+result);
-		return result;
+		System.out.println("서비스로그인결과?"+session.getId());
+		return session;
 	}
 
 
