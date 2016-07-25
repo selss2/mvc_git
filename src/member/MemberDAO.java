@@ -35,9 +35,28 @@ public class MemberDAO {
 		}
 	}
 	public int insert(MemberBean mem){
-		String sql = "insert into member(id,pw,name,reg_date,ssn)"
-				+ "values('"+mem.getId()+"','"+mem.getPw()+"','"+mem.getName()
-				+"','"+mem.getRegDate()+"','"+mem.getSsn()+"')";
+		int result = 0;
+		String sql = "insert into member(id,pw,name,reg_date,ssn,email,profile_img,phone)"
+				+ "values(?,?,?,?,?,?,?,?)";
+		try {
+			pstmt.setString(1, mem.getId());
+			pstmt.setString(2, mem.getPw());
+			pstmt.setString(3, mem.getName());
+			pstmt.setString(4, mem.getRegDate());
+			pstmt.setString(5, mem.getSsn());
+			pstmt.setString(6, mem.getEmail());
+			pstmt.setString(7, "default.jpg");
+			pstmt.setString(8, mem.getPhone());
+			result = pstmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (result==1) {
+			System.out.println("DAO에서 가입 성공");
+		} else {
+			System.out.println("DAO에서 가입 실패");	
+		}
 		return exeUpdate(sql);
 	}
 	public int update(MemberBean mem){

@@ -25,13 +25,20 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public String regist(MemberBean mem) {
 		String msg = "";
-		
-		int result = dao.insert(mem);
-		if (result==1) {
-			msg = "회원가입 축하합니다";
+		MemberBean temp = this.findById(mem.getId());
+		if (temp == null) {
+			System.out.println(mem.getId()+"가 존재하지 않음,가입 가능한 ID");
+			int result = dao.insert(mem);
+			if (result==1) {
+				msg = "success";
+			} else {
+				msg = "fail";
+			}
 		} else {
-			msg = "회원가입 실패";
+			System.out.println(mem.getId()+"가 존재함,가입 불가능한 ID");
+			msg = "fail";
 		}
+		
 		return msg;
 	}
 
