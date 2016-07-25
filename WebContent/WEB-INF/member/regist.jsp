@@ -6,7 +6,7 @@
 <jsp:include page="../global/top.jsp"/>
 <jsp:include page="../global/header.jsp"/>
 <div class="box">
-	<form action="../result/regist_result.jsp" method="post">
+	<form action="${context}/member.do" method="post">
 		<span class="meta">이름</span>	<input type="text" name="name" /><br />
 		<span class="meta">ID</span> <input type="text" name="id"/><br />
 		<span class="meta">비밀번호</span> <input type="text" name="pw" /><br />
@@ -24,6 +24,8 @@
 		<input type="checkbox" name="subject" value="delphi" /> 델파이
 		<input type="checkbox" name="subject" value="html" /> HTML
 		<br /><br /><br />
+		<input type="hidden" name="action" value="regist" />
+		<input type="hidden" name="page" value="login" />
 		<input type="submit" value="회원가입" />
 		<input type="reset" value="취소" />
 	</form>

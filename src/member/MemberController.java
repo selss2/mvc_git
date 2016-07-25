@@ -51,6 +51,7 @@ public class MemberController extends HttpServlet {
 			member.setName(request.getParameter("name"));
 			member.setGenderAndBirth(request.getParameter("ssn"));
 			member.setPhone(request.getParameter("phone"));
+			member.setEmail(request.getParameter("email"));
 			if (service.regist(member).equals("fail")) {
 				System.out.println("컨트롤러 : 회원가입 실패");
 				Separator.command.setPage("regist");
