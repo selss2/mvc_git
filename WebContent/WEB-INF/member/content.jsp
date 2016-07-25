@@ -14,7 +14,7 @@
 		<li><a href="${context}/member.do?action=login&page=login">로그인</a></li>
 		<li><a href="${context}/member.do?action=logout&page=logout">로그아웃 </a></li>
 		<li><a href="${context}/member.do?action=list&page=list">리스트 </a></li>
-		<li><a href="${context}/member.do?action=find_by&page=find_by">검색</a></li>
+		<li><a href="${context}/member.do?page=find_by">검색</a></li>
 		<li><a href="${context}/member.do?action=count&page=count">회원수</a></li>
 	</ol>
 	</div>

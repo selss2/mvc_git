@@ -58,12 +58,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public void delete(MemberBean member) {
-		if (dao.delete(member) == 1) {
-				session = null;
-			}
-		} 
-
-	
+		dao.delete(member);
+	}
 
 
 	@Override

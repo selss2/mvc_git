@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="${css}/global.css" />
 <link rel="stylesheet" href="${css}/member.css" />
 <jsp:include page="../global/top.jsp"/>
@@ -51,6 +50,5 @@
 		<img src="${img}/home.png" alt="member" style="width:30px" />
 		</a>
 	</div>
-
-	<jsp:include page="../global/footer.jsp"/>
-	<jsp:include page="../global/end.jsp"/> 
+<jsp:include page="../global/footer.jsp"/>
+<jsp:include page="../global/end.jsp"/> 

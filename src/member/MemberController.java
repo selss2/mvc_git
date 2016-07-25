@@ -75,23 +75,37 @@ public class MemberController extends HttpServlet {
 			DispatcherServlet.send(request, response, Separator.command);
 			break;
 		case "delete":
+			member = (MemberBean) session.getAttribute("user");
+			session.invalidate();
 			service.delete(member);
+			Separator.command.setDirectory("home");
+			Separator.command.setPage("main");
+			Separator.command.setView();
 			DispatcherServlet.send(request, response, Separator.command);
 			break;
 		case "logout":
-			service.logout(member);
+			session.invalidate();
+			Separator.command.setDirectory("home");
+			Separator.command.setPage("main");
+			Separator.command.setView();
 			DispatcherServlet.send(request, response, Separator.command);
 			break;
 		case "list":
 			service.list();
 			DispatcherServlet.send(request, response, Separator.command);
 			break;
-		case "find_by":
+		case "find_by_id":
+			request.setAttribute("member", service.findById(request.getParameter("keyword")));
+			DispatcherServlet.send(request, response, Separator.command);
+			break;
+		case "find_by_name":
 			service.findBy(request.getParameter("keyword"));
 			DispatcherServlet.send(request, response, Separator.command);
 			break;
 		case "count":
-			service.count();
+			request.setAttribute("count", service.count()); 
+			Separator.command.setPage("count");
+			Separator.command.setView();
 			DispatcherServlet.send(request, response, Separator.command);
 			break;
 		default:
