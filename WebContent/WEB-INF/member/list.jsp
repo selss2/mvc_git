@@ -1,71 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>회원목록</title>
-<link rel="stylesheet" href="../../css/member.css" />
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-
-</style>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="${css}/global.css" />
+<link rel="stylesheet" href="${css}/member.css" />
+<jsp:include page="../global/top.jsp"/>
+<jsp:include page="../global/header.jsp"/>
+<jsp:include page="../global/navi.jsp"/>
 <div class="box">
 
 	<h1>목록보기</h1> <br> 
-	<table>
+	<table id="member_list">
 	  <tr>
 	    <th>ID</th>
 	    <th>이 름</th>
 	    <th>등록일</th>
 	    <th>생년월일</th>
+	    <th>이메일</th>
+	    <th>전화번호</th>
 	  </tr>
+	  <c:forEach var="member"  items="${list}">
 	  <tr>
-	    <td>hong</td>
-	    <td><a href="detail.jsp">홍길동</a></td>
-	    <td>2016-07-03</td>
-	    <td>901001</td>
+	    <td>${member.id}</td>
+	    <td><a href="${context}/member.do?action=find_by_id&page=find_by_id&keyword=${member.id}">
+	    	${member.name}</a></td>
+	    <td>${member.regDate}</td>
+	    <td>${member.birth}</td>
+	    <td>${member.email}</td>
+	    <td>${member.phone}</td>
 	  </tr>
-	   <tr>
-	    <td>lee</td>
-	    <td><a href="detail.jsp">이순신</a></td>
-	    <td>2016-07-03</td>
-	    <td>031001</td>
-	  </tr>
-	   <tr>
-	    <td>song</td>
-	    <td><a href="detail.jsp">송지효</a></td>
-	    <td>2016-07-03</td>
-	    <td>891001</td>
-	  </tr>
-	   <tr>
-	    <td>park</td>
-	    <td><a href="detail.jsp">박지성</a></td>
-	    <td>2016-07-03</td>
-	    <td>061001</td>
-	  </tr>
-	   <tr>
-	    <td>kim</td>
-	    <td><a href="detail.jsp">김유신</a></td>
-	    <td>2016-07-03</td>
-	    <td>851001</td>
-	  </tr>
+	 </c:forEach>
 	</table>
 	<a href="../../index.jsp">
 		<img src="../../img/home.png" alt="home" style="width: 30px"/>
@@ -74,5 +35,5 @@ tr:nth-child(even) {
 		<img src="../../img/member.jpg" alt="member" style="width: 30px"/>
 	</a>
 </div>
-</body>
-</html>
+<jsp:include page="../global/footer.jsp"/>
+<jsp:include page="../global/end.jsp"/> 

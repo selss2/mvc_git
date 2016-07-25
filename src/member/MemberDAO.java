@@ -109,11 +109,6 @@ public class MemberDAO {
 		String sql="select * from member";
 		List<MemberBean> list = new ArrayList<MemberBean>();
 		try {
-			Class.forName(Constants.ORACLE_DRIVER);
-			con=DriverManager.getConnection(
-					Constants.ORACLE_URL,
-					Constants.USER_ID,
-					Constants.USER_PW);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			while(rs.next()){
@@ -122,7 +117,7 @@ public class MemberDAO {
 					t.setPw(rs.getString("PW"));
 					t.setName(rs.getString("NAME"));
 					t.setEmail(rs.getString("EMAIL"));
-					t.setGenderAndBirth("SSN");
+					/*t.setGenderAndBirth("SSN");*/
 					t.setRegDate(rs.getString("REG_DATE"));
 					t.setProfileImg(rs.getString("PROFILE_IMG"));
 				list.add(t);

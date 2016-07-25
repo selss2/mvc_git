@@ -91,7 +91,7 @@ public class MemberController extends HttpServlet {
 			DispatcherServlet.send(request, response, Separator.command);
 			break;
 		case "list":
-			service.list();
+			request.setAttribute("list", service.list());
 			DispatcherServlet.send(request, response, Separator.command);
 			break;
 		case "find_by_id":
