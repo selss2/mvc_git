@@ -13,6 +13,7 @@ import global.DispatcherServlet;
 import global.ParamMap;
 import global.Separator;
 import subject.SubjectBean;
+import subject.SubjectMember;
 import subject.SubjectService;
 import subject.SubjectServiceImpl;
 
@@ -26,6 +27,7 @@ public class MemberController extends HttpServlet {
 		Separator.init(request,response);
 		MemberService service = MemberServiceImpl.getInstance();
 		SubjectService subjService =SubjectServiceImpl.getInstance();
+		SubjectMember sm = new SubjectMember();
 		MemberBean member = new MemberBean();
 		SubjectBean subject = new SubjectBean();
 		System.out.println("액션 ? "+Separator.command.getAction());
@@ -39,15 +41,15 @@ public class MemberController extends HttpServlet {
 		case "login":
 			member.setId(request.getParameter("id"));
 			member.setPw(request.getParameter("pw"));
-			service.login(member);
+			sm = service.login(member);
 			if(member.getId().equals("fail")){
 				System.out.println("컨트롤러 : 로그인실패");
 				Separator.command.setPage("login");
 				Separator.command.setView();
 			}else{
 				System.out.println("컨트롤러 : 로그인성공");
-				request.setAttribute("user", member);
-				session.setAttribute("user", member);
+				request.setAttribute("user", sm);
+				session.setAttribute("user", sm);
 				Separator.command.setDirectory("global");
 				Separator.command.setView();
 			}

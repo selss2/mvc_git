@@ -54,9 +54,9 @@ public class SubjectDAO {
 	public SubjectBean findById(String id){
 		SubjectBean s = null;
 		String sql = "select "
-				+ "id as id "
-				+ "major as major "
-				+ "subjects as sub"
+				+ "id as id, "
+				+ "major as major, "
+				+ "subjects as sub "
 				+ "from subject where id = ?";
 		try {
 			pstmt = con.prepareStatement(sql);

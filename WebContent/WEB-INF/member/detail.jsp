@@ -8,8 +8,8 @@
 		<h1>회원상세정보</h1>
 		<table id="member_detail">
 				<tr>
-				<td rowspan="4" style="width:30%">
-				<img src="${img}/member/${user.profileImg}" alt="W3Schools.com" width="104"
+				<td rowspan="5" style="width:30%">
+				<img src="${img}/member/${user.img}" alt="W3Schools.com" width="104"
 			height="142"></td>
 				<td style="width:20%" class="font_bold bg_color_yellow">ID</td>
 				<td style="width:40%">${user.id}</td>
@@ -22,7 +22,7 @@
 			<tr>
 				
 				<td class="font_bold bg_color_yellow">성 별</td>
-				<td>${user.gender}</td>
+				<td>남</td>
 			</tr>
 			<tr>
 				
@@ -30,12 +30,22 @@
 				<td>${user.email}</td>
 			</tr>
 			<tr>
+				
+				<td class="font_bold bg_color_yellow">전공과목</td>
+				<td>${user.major}</td>
+			</tr>
+			<tr>
+				<td class="font_bold bg_color_yellow">수강과목</td>
+				<td colspan="2">${user.subjects}</td>
+				
+			</tr>
+			<tr>
 				<td class="font_bold bg_color_yellow">생년월일</td>
-				<td colspan="2">${user.birth}</td>
+				<td colspan="2">900101</td>
 			</tr>
 			<tr>
 				<td class="font_bold bg_color_yellow">등록일</td>
-				<td colspan="2">${user.regDate}</td>
+				<td colspan="2">${user.reg}</td>
 				
 			</tr>
 		</table>

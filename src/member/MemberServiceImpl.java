@@ -5,6 +5,7 @@ import java.util.Map;
 
 import bank.AccountService;
 import bank.AccountServiceImpl;
+import subject.SubjectBean;
 import subject.SubjectDAO;
 import subject.SubjectMember;
 
@@ -100,15 +101,29 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public SubjectMember login(MemberBean member) {
+		SubjectMember sm = new SubjectMember();
+		SubjectBean sb =new SubjectBean();
 		// 2.로그인
 			if (dao.login(member)) {
 				session = dao.findById(member.getId());
 				accService.map();
+				sb = subjDao.findById(member.getId());
+				sm.setEmail(session.getEmail());
+				sm.setId(session.getId());
+				sm.setImg(session.getProfileImg());
+				sm.setMajor(sb.getMajor());
+				sm.setName(session.getName());
+				sm.setPhone(session.getPhone());
+				sm.setPw(session.getPw());
+				sm.setReg(session.getRegDate());
+				sm.setSsn(session.getSsn());
+				sm.setSubjects(sb.getSubjects());
+				
 			}else{
-				session.setId("fail");
+				sm.setId("fail");
 			}
-		System.out.println("서비스로그인결과?"+session.getId());
-		return null;
+		System.out.println("서비스로그인결과?"+sm.getId());
+		return sm;
 	}
 
 
