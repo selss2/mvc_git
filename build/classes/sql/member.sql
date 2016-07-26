@@ -33,10 +33,10 @@ alter table member modify phone varchar2(15);
 update member set ssn = '900301-1' where id = 'park';
 update member set profile_img = id ||'.jpg' where profile_img IS NULL;
 -- DELETE
-delete from member where id = 'test';
+delete from member where id = 'son';
 select * from member;
 
-select * from member where id='hong';
+select * from member where id='son';
 
 
 

@@ -10,7 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import global.DispatcherServlet;
+import global.ParamMap;
 import global.Separator;
+import subject.SubjectBean;
+import subject.SubjectService;
+import subject.SubjectServiceImpl;
 
 @WebServlet("/member.do")
 public class MemberController extends HttpServlet {
@@ -21,7 +25,9 @@ public class MemberController extends HttpServlet {
 		HttpSession session = request.getSession();
 		Separator.init(request,response);
 		MemberService service = MemberServiceImpl.getInstance();
+		SubjectService subjService =SubjectServiceImpl.getInstance();
 		MemberBean member = new MemberBean();
+		SubjectBean subject = new SubjectBean();
 		System.out.println("액션 ? "+Separator.command.getAction());
 		switch (Separator.command.getAction()) {
 		case "move":
@@ -33,7 +39,7 @@ public class MemberController extends HttpServlet {
 		case "login":
 			member.setId(request.getParameter("id"));
 			member.setPw(request.getParameter("pw"));
-			member = service.login(member);
+			service.login(member);
 			if(member.getId().equals("fail")){
 				System.out.println("컨트롤러 : 로그인실패");
 				Separator.command.setPage("login");
@@ -55,12 +61,18 @@ public class MemberController extends HttpServlet {
 			member.setRegDate();
 			member.setPhone(request.getParameter("phone"));
 			member.setEmail(request.getParameter("email"));
+			System.out.println("전공 :::"+request.getParameter("major"));
+			System.out.println("수강과목 :::"+ParamMap.getValues(request, "subject"));
 			if (service.regist(member).equals("fail")) {
 				System.out.println("컨트롤러 : 회원가입 실패");
 				Separator.command.setPage("regist");
 				Separator.command.setView();
 			} else {
 				System.out.println("컨트롤러 : 회원가입 성공");
+				subject.setId(request.getParameter("id"));
+				subject.setMajor(request.getParameter("major"));
+				subject.setSubjects(ParamMap.getValues(request, "subject"));
+				subjService.insert(subject);
 				Separator.command.setPage("login");
 				Separator.command.setView();
 			}
@@ -99,7 +111,7 @@ public class MemberController extends HttpServlet {
 			DispatcherServlet.send(request, response, Separator.command);
 			break;
 		case "find_by_name":
-			service.findBy(request.getParameter("keyword"));
+			request.setAttribute("list", service.findBy(request.getParameter("keyword")));
 			DispatcherServlet.send(request, response, Separator.command);
 			break;
 		case "count":

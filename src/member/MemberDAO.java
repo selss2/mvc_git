@@ -156,9 +156,32 @@ public class MemberDAO {
 	}
 	// findByNotPK
 	public List<MemberBean> findByName(String name) {
-		String sql = "select * from member where name ='"+name+"'";
+		String sql = "select * from member where name =?";
+		List<MemberBean> list = new ArrayList<MemberBean>();
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				MemberBean temp = new MemberBean();
+				temp = new MemberBean();
+				temp.setId(rs.getString("ID"));
+				temp.setPw(rs.getString("PW"));
+				temp.setName(rs.getString("NAME"));
+				temp.setEmail(rs.getString("EMAIL"));
+				temp.setGenderAndBirth(rs.getString("SSN"));
+				temp.setRegDate(rs.getString("REG_DATE"));
+				temp.setProfileImg(rs.getString("PROFILE_IMG"));
+				temp.setPhone(rs.getString("PHONE"));
+				System.out.println("DAO에서 NAME존재 체크:"+temp.getName());
+				list.add(temp);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		return null;
+		return list;
 	}
 	// count
 	public int count() {

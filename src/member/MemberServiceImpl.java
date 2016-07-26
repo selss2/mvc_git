@@ -5,12 +5,16 @@ import java.util.Map;
 
 import bank.AccountService;
 import bank.AccountServiceImpl;
+import subject.SubjectDAO;
+import subject.SubjectMember;
 
 public class MemberServiceImpl implements MemberService{
 	
-	MemberDAO dao = MemberDAO.getInstance();
-	AccountService accService = AccountServiceImpl.getInstance();
-	MemberBean session;
+	private MemberDAO dao = MemberDAO.getInstance();
+	private SubjectDAO subjDao = SubjectDAO.getInstance();
+	private AccountService accService = AccountServiceImpl.getInstance();
+	private MemberBean session;
+	
 	private static MemberServiceImpl instance = new MemberServiceImpl();
 	
 	public static MemberServiceImpl getInstance() {
@@ -85,7 +89,7 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public List<?> findBy(String keyword) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.findByName(keyword);
 	}
 
 
@@ -95,7 +99,7 @@ public class MemberServiceImpl implements MemberService{
 		return null;
 	}
 	@Override
-	public MemberBean login(MemberBean member) {
+	public SubjectMember login(MemberBean member) {
 		// 2.로그인
 			if (dao.login(member)) {
 				session = dao.findById(member.getId());
@@ -104,7 +108,7 @@ public class MemberServiceImpl implements MemberService{
 				session.setId("fail");
 			}
 		System.out.println("서비스로그인결과?"+session.getId());
-		return session;
+		return null;
 	}
 
 

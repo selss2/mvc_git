@@ -113,6 +113,7 @@ public class MemberBean implements Serializable{
 		String now = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
 		String[] ssnArr = ssn.split("-");
 		String[] nowArr = now.split("-");
+		System.out.println("넘버포맷"+ssnArr[0]);
 		int ssnBirth = (Integer.parseInt(ssnArr[0]));
 		int ssnGender = (Integer.parseInt(ssnArr[1]));
 		int thisYear = (Integer.parseInt(nowArr[0]));
