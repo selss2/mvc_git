@@ -3,13 +3,22 @@
 <link rel="stylesheet" href="${css}/global.css" />
 <jsp:include page="header.jsp"/>
 <jsp:include page="navi.jsp"/>
-	<div id="section">
-		<h2>회원관리</h2>
-		<p>London is the capital city of England. It is the most populous city in the United Kingdom,
-		with a metropolitan area of over 13 million inhabitants.</p>
-		<p>Standing on the River Thames, London has been a major settlement for two millennia,
-		its history going back to its founding by the Romans, who named it Londinium.</p>
+	<div id="section" >
+		<button id="button" onclick="showAlert()" style="margin:0 auto;">
+			CLICK ME 
+		</button>
 	</div>
 	
 <jsp:include page="footer.jsp"/>
 <jsp:include page="end.jsp"/>
+<script>
+	function showAlert(){
+		alert('로딩 되자마자 팝업이 뜬다 !!');
+	}
+	function clickme() {
+		document.getElementsByTagName('button')
+		.onclick=showAlert();
+	}
+	window.onload=clickme();
+</script>
+
