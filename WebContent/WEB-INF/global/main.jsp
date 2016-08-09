@@ -5,7 +5,7 @@
 <script src="${js}/global.js"></script>
 <jsp:include page="navi.jsp"/>
 	<div id="section" >
-		<button id="button" style="margin:0 auto;">
+		<button id="bt" style="margin:0 auto;">
 			모던 자바스크립트 GO 
 		</button>
 	</div>
@@ -13,6 +13,6 @@
 <jsp:include page="footer.jsp"/>
 <jsp:include page="end.jsp"/>
 <script>
-	window.onload=clickme();
+	window.onload=init("${context}");
 </script>
 

@@ -1,7 +1,9 @@
-function showAlert(){
-	alert('로딩 되자마자 팝업이 뜬다 !!');
+function init(context){
+	var bt=document.getElementById('bt');
+	/*bt.addEventListener('click',clickme,false);*/
+	bt.onclick=move(context);
 }
-function clickme() {
-	document.getElementsByTagName('button')
-	.onclick=showAlert();
+function move(context){
+	alert('Douglas 가기 직전..');
+	location.href=context+"/douglas.do";
 }
