@@ -2,23 +2,17 @@
 <jsp:include page="top.jsp"/>
 <link rel="stylesheet" href="${css}/global.css" />
 <jsp:include page="header.jsp"/>
+<script src="${js}/global.js"></script>
 <jsp:include page="navi.jsp"/>
 	<div id="section" >
-		<button id="button" onclick="showAlert()" style="margin:0 auto;">
-			CLICK ME 
+		<button id="button" style="margin:0 auto;">
+			모던 자바스크립트 GO 
 		</button>
 	</div>
 	
 <jsp:include page="footer.jsp"/>
 <jsp:include page="end.jsp"/>
 <script>
-	function showAlert(){
-		alert('로딩 되자마자 팝업이 뜬다 !!');
-	}
-	function clickme() {
-		document.getElementsByTagName('button')
-		.onclick=showAlert();
-	}
 	window.onload=clickme();
 </script>
 

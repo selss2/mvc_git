@@ -30,16 +30,7 @@
 	}else{
 		member.setId(id);
 		member.setPw(pw);
-		String name = service.login(member);
-		application.log("DB다녀온 이름:"+name);
-		if(name==null){
-			%>
-			<h2>로그인 실패!!</h2>
-			<a href="../service/login.jsp">다시 시도하기</a>
-			<%
-		}else{
-			response.sendRedirect("");
-		}
+	
 	}
 %>
 </div>	
