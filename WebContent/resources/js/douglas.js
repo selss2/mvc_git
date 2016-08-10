@@ -1,40 +1,64 @@
+var context = {
+	name : '',
+	setContext : function(context){
+		this.name = context;
+	},
+	init : function(context) {
+		var bt_bom = document.querySelector('#bt_bom');
+		var bt_dom = document.querySelector('#bt_dom');
+		var bt_kaup = document.querySelector('#bt_kaup');
+		var bt_creator = document.querySelector('#bt_creator');
+		console.log('CONTEXT : '+context);
+		this.setContext(context);
+		console.log('CONTEXT : '+this.name);
+		
+		bt_bom.addEventListener('click',bom_go,false);
+		bt_dom.addEventListener('click',dom_go,false);
+		bt_kaup.addEventListener('click',kaup_go,false);
+		bt_creator.addEventListener('click',creator_go,false);
+	},
+	bom_go : function() {
+		location.href=getContext()+'/douglas.do?page=bom';
+	},
+	dom_go : function() {
+		location.href=getContext()+'/douglas.do?page=dom';
+	},
+	creator_go : function() {
+		location.href=getContext()+'/douglas.do?page=creator';
+	}
+};
 
-var context= '';
-function  getContext() {
-    return this.context;
-}
-function  setContext(context) {
-    this.context = context;
-}
-
-function init(context){
-	var bt_bom = document.querySelector('#bt_bom');
-	var bt_dom = document.querySelector('#bt_dom');
-	var bt_kaup = document.querySelector('#bt_kaup');
-	var bt_creator = document.querySelector('#bt_creator');
-	console.log('CONTEXT : '+context);
-	this.setContext(context);
-	console.log('CONTEXT : '+this.getContext());
-	
-	bt_bom.addEventListener('click',bom_go,false);
-	bt_dom.addEventListener('click',dom_go,false);
-	bt_kaup.addEventListener('click',kaup_go,false);
-	bt_creator.addEventListener('click',creator_go,false);
-	
-}
-function bom_go(){
-	location.href=getContext()+'/douglas.do?page=bom';
-}
-function dom_go(){
-	location.href=getContext()+'/douglas.do?page=dom';
-}
-function creator_go() {
-	location.href=getContext()+'/douglas.do?page=creator';
-}
 function creator_init(){
+	alert('creator_init 진입');
 	document
 	.querySelector('#bt_spec_show')
 	.addEventListener('click',member_spec,false);
+	document
+	.querySelector('#bt_make_account')
+	.addEventListener('click',account_spec,false);
+	document
+	.querySelector('#bt_deposit')
+	.addEventListener('click',account_deposit,false);
+	document
+	.querySelector('#bt_withdraw')
+	.addEventListener('click',account_withdraw,false);
+}
+function account_spec(){
+	var account = {
+		account_no : 0,
+		money : 0
+	}
+	account.account_no = Math.floor(Math.random()*899999)+100000;
+	document.querySelector('#result_account').innerHTML = account.account_no;
+	
+}
+function account_deposit(){
+	var money = document.querySelector('#money').value;
+	document.querySelector('#rest_money').innerHTML=money;
+}
+function account_withdraw(){
+	var money = document.querySelector('#money').value;
+	document.querySelector('#rest_money').innerHTML='-'+money;
 }
 function member_spec(){
 	var member = new Object();
@@ -110,3 +134,5 @@ function kaup_calc(){
 	document.getElementById('result').innerHTML=name+'의 카우푸결과'+result;
 	/*return name + "의 BMI지수는 " + Double.parseDouble(String.format("%.2f", kaup)) + "이고, " + result + "이다";*/
 }
+/*account*/
+
