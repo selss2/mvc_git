@@ -7,21 +7,21 @@
 <div id="container">
 <section id="formbox">
 	<p>Creator 학습장</p>
-	<input type="text" id="name" name="name" value="" />
-	<input type="text" id="ssn" name="ssn" value="" />
+	NAME : <input type="text" id="name" name="name" value="" />
+	SSN : <input type="text" id="ssn" name="ssn" value="" />
 	<button id="bt_spec_show">회원정보 보기</button>
 </section>
 <section>
 	<p>회원 정보</p>
-	<article id="name"></article>
-	<article id="age"></article>
-	<article id="gender"></article>
+	<article id="result_name"></article>
+	<article id="result_age"></article>
+	<article id="result_gender"></article>
 </section>
 
 </div>
 <jsp:include page="../global/footer.jsp"/>
 <jsp:include page="../global/end.jsp"/>
 <script>
-window.onload=init();
+window.onload=creator_init();
 
 </script>

@@ -31,13 +31,48 @@ function dom_go(){
 function creator_go() {
 	location.href=getContext()+'/douglas.do?page=creator';
 }
-
+function creator_init(){
+	document
+	.querySelector('#bt_spec_show')
+	.addEventListener('click',member_spec,false);
+}
 function member_spec(){
 	var member = new Object();
-	member.name = '';
+	var ssn=document.querySelector('#ssn').value;
+	member.name=document.querySelector('#name').value;
 	member.age = 0;
 	member.gender = '';
-	
+	var now = new Date().getFullYear();
+	var ssnArr = ssn.split("-");
+	var ageResult1 = ssnArr[0];
+	var genderResult = ssnArr[1];
+	var ageResult0 = 0;
+	switch (genderResult%2) {
+	case 1: case 5: 
+		member.gender="남"; 
+		ageResult0 = now - 1900-(ageResult1/10000);
+		member.age = ageResult0.toString().split(".")[0];
+		break;
+	case 3: case 7:
+		member.gender="남"; 
+		ageResult0 = now - 2000-(ageResult1/10000);
+		member.age = ageResult0.toString().split(".")[0];
+		break;
+	case 2: case 6:
+		member.gender="여";
+		ageResult0 = now - 1900-(ageResult1/10000);
+		member.age = ageResult0.toString().split(".")[0];
+		break;
+	case 4: case 8:
+		member.gender="여";
+		ageResult0 = now - 2000-(ageResult1/10000);
+		member.age = ageResult0.toString().split(".")[0];
+		break;
+
+}	
+	document.getElementById('result_name').innerHTML = member.name;
+	document.getElementById('result_age').innerHTML = member.age;
+	document.getElementById('result_gender').innerHTML = member.gender;
 }
 /*kaup*/
 function kaup_init(){
