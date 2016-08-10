@@ -1,34 +1,30 @@
-document.write("<script type='text/javascript' src='global.js'><"+"/script>");  
+var context='';
 var douglas = {
-	name : '',
-	setContext : function(context){
-		this.name = context;
-	},
-	init : function(context) {
+	init : function(param) {
 		var bt_bom = document.querySelector('#bt_bom');
 		var bt_dom = document.querySelector('#bt_dom');
 		var bt_kaup = document.querySelector('#bt_kaup');
 		var bt_creator = document.querySelector('#bt_creator');
-		console.log('CONTEXT : '+context);
-		this.setContext(context);
-		console.log('CONTEXT : '+this.name);
+		console.log('CONTEXT2 : '+param);
+		context = param;
+		console.log('CONTEXT2 : '+context);
 		
-		bt_bom.addEventListener('click',this.bom_go,false);
-		bt_dom.addEventListener('click',this.dom_go,false);
-		bt_kaup.addEventListener('click',this.kaup_go,false);
-		bt_creator.addEventListener('click',this.creator_go,false);
+		bt_bom.addEventListener('click',this.to_bom,false);
+		bt_dom.addEventListener('click',this.to_dom,false);
+		bt_kaup.addEventListener('click',this.to_kaup,false);
+		bt_creator.addEventListener('click',this.to_creator,false);
 	},
-	bom_go : function() {
-		location.href=this.name+'/douglas.do?page=bom';
+	to_bom : function() {
+		location.href=context+'/douglas.do?page=bom';
 	},
-	dom_go : function() {
-		location.href=this.name+'/douglas.do?page=dom';
+	to_dom : function() {
+		location.href=context+'/douglas.do?page=dom';
 	},
-	creator_go : function() {
-		location.href=this.name+'/douglas.do?page=creator';
+	to_creator : function() {
+		location.href=context+'/douglas.do?page=creator';
 	},
-	to_modernjs : function() {
-		location.href=context.path+'/douglas.do?page=creator';
+	to_kaup : function() {
+		location.href=context+'/douglas.do?page=kaup';
 	}
 };
 var create = {
@@ -107,7 +103,6 @@ function member_spec(){
 }
 /*kaup*/
 function kaup_init(){
-	alert('카우푸 이닛 호출');
 	var bt_kaup_calc = document.getElementById('bt_kaup_calc');
 	bt_kaup_calc.addEventListener('click',kaup_calc,false);
 }
@@ -142,4 +137,9 @@ function kaup_calc(){
 	/*return name + "의 BMI지수는 " + Double.parseDouble(String.format("%.2f", kaup)) + "이고, " + result + "이다";*/
 }
 /*account*/
-
+var global = {
+		init : function() {
+			document.querySelector('#bt_modern_js')
+			.addEventListener('click',douglas.to_modernjs,false);
+		}
+	}

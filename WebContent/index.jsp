@@ -10,6 +10,6 @@
 	<a href="#" id="atag">홈으로</a>
 </body>
 <script type="text/javascript">
-	window.onload = context.init("${context}");
+	window.onload = global.init("${context}");
 </script>
 </html>

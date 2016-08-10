@@ -13,6 +13,6 @@
 <jsp:include page="footer.jsp"/>
 <jsp:include page="end.jsp"/>
 <script>
-	window.onload=global.init();
+	window.onload=global.to_douglas();
 </script>
 

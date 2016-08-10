@@ -1,19 +1,12 @@
-var context = {
-	path : '',
+var context='';
+var global = {
 	init : function(param) {
-		context.path=param;
-		index.go_home();
+		context=param;
+		location.href=context+"/home.do";
+	},
+	to_douglas : function() {
+		location.href=context+"/douglas.do";
 	}
 };
-var index = {
-	go_home : function (){
-		location.href=context.path+"/home.do";
-	}
-}
-var global = {
-	init : function() {
-		document.querySelector('#bt_modern_js')
-		.addEventListener('click',douglas.to_modernjs,false);
-	}
-}
+
 

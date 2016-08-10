@@ -16,6 +16,6 @@
 <jsp:include page="../global/footer.jsp"/>
 <jsp:include page="../global/end.jsp"/>
 <script>
-window.onload=context.init("${context}");
+window.onload=douglas.init("${context}");
 
 </script>
