@@ -13,15 +13,5 @@ var aaa = {
 		location.href=this.context+"/douglas.do";
 	}
 };
-function test2() {
-	alert('222');
-}
-var test = {
-		init : function(){
-			alert('0000');
-		}
-};
-function test3(){
-	alert('===');
-}
+
 
