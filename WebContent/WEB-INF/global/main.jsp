@@ -15,6 +15,5 @@
 <jsp:include page="end.jsp"/>
 <script>
 	window.onload=global.init('${context}');
-
 </script>
 

@@ -1,12 +1,12 @@
-var aaa = {
+var global = {
 	context : '',
 	setContext : function(param) {
 		this.context = param;
 	},
 	init : function(param) {
 		this.setContext(param);
-		var bt = document.querySelector('#bt_js_go');
-		bt.onclick=this.move();
+		document.querySelector('#bt_js_go')
+		onclick=this.move();
 		
 	},
 	move : function() {
