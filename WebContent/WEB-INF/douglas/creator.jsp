@@ -5,17 +5,23 @@
 <script src="${js}/douglas.js"></script>
 <link rel="stylesheet" href="${css}/douglas.css" />
 <div id="container">
+<section id="formbox">
+	<p>Creator 학습장</p>
+	<input type="text" id="name" name="name" value="" />
+	<input type="text" id="ssn" name="ssn" value="" />
+	<button id="bt_spec_show">회원정보 보기</button>
+</section>
 <section>
-	<button id="bt_bom">BOM(Browser Object Model)</button> <br />
-	<button id="bt_dom">DOM(Document Object Model)</button> <br />
-	<button id="bt_kaup">KAUP</button> <br />
-	<button id="bt_creator">CREATOR</button>
+	<p>회원 정보</p>
+	<article id="name"></article>
+	<article id="age"></article>
+	<article id="gender"></article>
 </section>
 
 </div>
 <jsp:include page="../global/footer.jsp"/>
 <jsp:include page="../global/end.jsp"/>
 <script>
-window.onload=init("${context}");
+window.onload=init();
 
 </script>

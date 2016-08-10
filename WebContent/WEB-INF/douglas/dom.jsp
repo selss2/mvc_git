@@ -5,17 +5,16 @@
 <script src="${js}/douglas.js"></script>
 <link rel="stylesheet" href="${css}/douglas.css" />
 <div id="container">
-<section>
-	<button id="bt_bom">BOM(Browser Object Model)</button> <br />
-	<button id="bt_dom">DOM(Document Object Model)</button> <br />
-	<button id="bt_kaup">KAUP</button> <br />
-	<button id="bt_creator">CREATOR</button>
+<section id="formbox">
+	<p>DOM 학습장</p>
 </section>
-
+<section id="databox">
+	<p>결과 : </p> <span id="result"></span>
+</section>
 </div>
 <jsp:include page="../global/footer.jsp"/>
 <jsp:include page="../global/end.jsp"/>
 <script>
-window.onload=init("${context}");
+window.onload=init();
 
 </script>

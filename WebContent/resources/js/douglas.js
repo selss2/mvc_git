@@ -1,9 +1,56 @@
-function init(){
-	var bt = document.getElementById('bt');
-	bt.addEventListener('click',kaup,false);
+
+var context= '';
+function  getContext() {
+    return this.context;
+}
+function  setContext(context) {
+    this.context = context;
 }
 
-function kaup(){
+function init(context){
+	var bt_bom = document.querySelector('#bt_bom');
+	var bt_dom = document.querySelector('#bt_dom');
+	var bt_kaup = document.querySelector('#bt_kaup');
+	var bt_creator = document.querySelector('#bt_creator');
+	console.log('CONTEXT : '+context);
+	this.setContext(context);
+	console.log('CONTEXT : '+this.getContext());
+	
+	bt_bom.addEventListener('click',bom_go,false);
+	bt_dom.addEventListener('click',dom_go,false);
+	bt_kaup.addEventListener('click',kaup_go,false);
+	bt_creator.addEventListener('click',creator_go,false);
+	
+}
+function bom_go(){
+	location.href=getContext()+'/douglas.do?page=bom';
+}
+function dom_go(){
+	location.href=getContext()+'/douglas.do?page=dom';
+}
+function creator_go() {
+	location.href=getContext()+'/douglas.do?page=creator';
+}
+
+function member_spec(){
+	var member = new Object();
+	member.name = '';
+	member.age = 0;
+	member.gender = '';
+	
+}
+/*kaup*/
+function kaup_init(){
+	alert('카우푸 이닛 호출');
+	var bt_kaup_calc = document.getElementById('bt_kaup_calc');
+	bt_kaup_calc.addEventListener('click',kaup_calc,false);
+}
+function kaup_go(){
+	location.href=getContext()+'/douglas.do?page=kaup';
+}
+
+function kaup_calc(){
+	alert('카우푸 칼크 클릭');
 	var name=document.querySelector('#name').value;
 	var height=document.getElementById('height').value;
 	var weight=document.getElementById('weight').value;
