@@ -1,4 +1,5 @@
-var context = {
+document.write("<script type='text/javascript' src='global.js'><"+"/script>");  
+var douglas = {
 	name : '',
 	setContext : function(context){
 		this.name = context;
@@ -25,6 +26,9 @@ var context = {
 	},
 	creator_go : function() {
 		location.href=this.name+'/douglas.do?page=creator';
+	},
+	to_modernjs : function() {
+		location.href=context.path+'/douglas.do?page=creator';
 	}
 };
 var create = {
