@@ -4,12 +4,12 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Document</title>
-	<script src="resources/js/global.js"></script>
 </head>
 <body>
 	<a href="#" id="atag">홈으로</a>
 </body>
+<script src="resources/js/application.js"></script>
 <script type="text/javascript">
-	window.onload = global.init("${context}");
+	application.init("${context}");
 </script>
 </html>

@@ -1,30 +1,23 @@
-var context='';
 var douglas = {
-	init : function(param) {
+		
+	init : function(context) {
 		var bt_bom = document.querySelector('#bt_bom');
 		var bt_dom = document.querySelector('#bt_dom');
 		var bt_kaup = document.querySelector('#bt_kaup');
-		var bt_creator = document.querySelector('#bt_creator');
-		console.log('CONTEXT2 : '+param);
-		context = param;
-		console.log('CONTEXT2 : '+context);
+		var bt_account = document.querySelector('#bt_account');
 		
-		bt_bom.addEventListener('click',this.to_bom,false);
-		bt_dom.addEventListener('click',this.to_dom,false);
-		bt_kaup.addEventListener('click',this.to_kaup,false);
-		bt_creator.addEventListener('click',this.to_creator,false);
-	},
-	to_bom : function() {
-		location.href=context+'/douglas.do?page=bom';
-	},
-	to_dom : function() {
-		location.href=context+'/douglas.do?page=dom';
-	},
-	to_creator : function() {
-		location.href=context+'/douglas.do?page=creator';
-	},
-	to_kaup : function() {
-		location.href=context+'/douglas.do?page=kaup';
+		bt_bom.addEventListener('click',function(){
+			location.href=context+'/douglas.do?page=bom';
+		},false);
+		bt_dom.addEventListener('click',function(){
+			location.href=context+'/douglas.do?page=dom';
+		},false);
+		bt_kaup.addEventListener('click',function(){
+			location.href=context+'/douglas.do?page=kaup';
+		},false);
+		bt_account.addEventListener('click',function(){
+			location.href=context+'/douglas.do?page=account';
+		},false);
 	}
 };
 var create = {
