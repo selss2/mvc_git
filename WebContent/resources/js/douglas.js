@@ -13,9 +13,16 @@ var douglas = (function(){
 	};
 })();
 var account = (function(){
-	var _account_no=0,_money=0;
-	
+	var _account_no,_money;
+	var setAccountNo = function(account_no){this._account_no=account_no;}
+	var getAccountNo = function(){return this._account_no;}
+	var setMoney = function(money){this._money=money;}
+	var getMoney = function(){return this._money;}
 	return {
+		setAccountNo : setAccountNo,
+		getAccountNo : getAccountNo,
+		setMoney : setMoney,
+		getMoney : getMoney,
 		init : function() {
 			document.querySelector('#bt_spec_show').addEventListener('click',member.spec,false);
 			document.querySelector('#bt_make_account').addEventListener('click',this.spec,false);
@@ -23,57 +30,80 @@ var account = (function(){
 			document.querySelector('#bt_withdraw').addEventListener('click',this.withdraw,false);
 		},
 		spec : function(){
-			this.account_no = Math.floor(Math.random()*899999)+100000;
-			document.querySelector('#result_account').innerHTML = this.account_no;
+			setAccountNo(Math.floor(Math.random()*899999)+100000);
+			document.querySelector('#result_account').innerHTML = getAccountNo();
 		},
 		deposit : function (){
-			var money = document.querySelector('#money').value;
-			document.querySelector('#rest_money').innerHTML=money;
+			var rest_money = getMoney();
+			var input_money = Number(document.querySelector('#money').value);
+			setMoney(input_money+rest_moeny);
+			document.querySelector('#rest_money').innerHTML=getMoeny();
 		},
 		withdraw : function (){
-			var money = document.querySelector('#money').value;
-			document.querySelector('#rest_money').innerHTML='-'+money;
+			setMoney(document.querySelector('#money').value);
+			document.querySelector('#rest_money').innerHTML='-'+getMoney();
 		}
 	};
 })();
 var member = (function(){
-	var _ssn,_name,_gender,_age;
+	/*var _ssn,_name,_gender,_age;*/
+	var _age,_gender,_name,_ssn;
+	var setAge = function(age){this._age=age;}
+	var setGender = function(gender){this._gender=gender;}
+	var setSSN = function(ssn){this._ssn=ssn;}
+	var setName = function(name){this._name=name;}
+	var getAge = function(){return this._age;}
+	var getSSN = function(){return this._ssn;}
+	var getName = function(){return this._name;}
+	var getGender = function(){return this._gender;}
+	
 	return {
+		setSSN : setSSN,
+		setName : setName,
+		setAge : setAge,
+		setGender : setGender,
+		getName : getName,
+		getAge : getAge,
+		getSSN : getSSN,
+		getGender : getGender,
 		spec : function (){
-			_ssn=document.querySelector('#ssn').value;
-			_name=document.querySelector('#name').value;
+			console.log('SET SSN'+document.querySelector('#ssn').value);
+			setSSN(document.querySelector('#ssn').value);
+			console.log('GET SSN'+getSSN());
+			setName(document.querySelector('#name').value);
 			var now = new Date().getFullYear();
-			var ssnArr = _ssn.split("-");
+			var ssnArr = getSSN().split("-");
 			var ageResult1 = ssnArr[0];
 			var genderResult = Number(ssnArr[1]);
 			var ageResult0 = 0;
 			switch (genderResult) {
 			case 1: case 5: 
-				_gender="남"; 
+				setGender("남"); 
 				ageResult0 = now - 1900-(ageResult1/10000);
-				_age = ageResult0.toString().split(".")[0];
+				setAge(ageResult0.toString().split(".")[0]);
 				break;
 			case 3: case 7:
-				_gender="남"; 
+				setGender("남");
 				ageResult0 = now - 2000-(ageResult1/10000);
-				_age = ageResult0.toString().split(".")[0];
+				setAge(ageResult0.toString().split(".")[0]);
 				break;
 			case 2: case 6:
-				_gender="여";
+				setGender("여");
 				ageResult0 = now - 1900-(ageResult1/10000);
-				_age = ageResult0.toString().split(".")[0];
+				setAge(ageResult0.toString().split(".")[0]);
 				break;
 			case 4: case 8:
-				_gender="여";
+				setGender("여");
 				ageResult0 = now - 2000-(ageResult1/10000);
-				_age = ageResult0.toString().split(".")[0];
+				setAge(ageResult0.toString().split(".")[0]);
 				break;
 
 		}	
-			document.querySelector('#result_name').innerHTML = _name;
-			document.querySelector('#result_age').innerHTML = _age;
-			document.querySelector('#result_gender').innerHTML = _gender;
+			document.querySelector('#result_name').innerHTML = getName();
+			document.querySelector('#result_age').innerHTML = getAge();
+			document.querySelector('#result_gender').innerHTML = getGender();
 		}
+		
 	};	
 })();
 
