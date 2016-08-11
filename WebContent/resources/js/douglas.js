@@ -1,6 +1,6 @@
-var douglas = {
-		
-	init : function(context) {
+var douglas = (function(){
+		var context = sessionStorage.getItem("context");
+		var init = function() {
 		var bt_bom = document.querySelector('#bt_bom');
 		var bt_dom = document.querySelector('#bt_dom');
 		var bt_kaup = document.querySelector('#bt_kaup');
@@ -18,8 +18,12 @@ var douglas = {
 		bt_account.addEventListener('click',function(){
 			location.href=context+'/douglas.do?page=account';
 		},false);
-	}
-};
+		
+	};
+	return {
+		init : init
+	};
+})();
 var create = {
 	creator_init : function() {
 		document

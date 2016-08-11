@@ -11,5 +11,6 @@
 <script src="resources/js/application.js"></script>
 <script type="text/javascript">
 	application.init("${context}");
+	application.go_home();
 </script>
 </html>
