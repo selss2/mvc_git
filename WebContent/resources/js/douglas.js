@@ -45,9 +45,9 @@ var member = (function(){
 			var now = new Date().getFullYear();
 			var ssnArr = _ssn.split("-");
 			var ageResult1 = ssnArr[0];
-			var genderResult = ssnArr[1];
+			var genderResult = Number(ssnArr[1]);
 			var ageResult0 = 0;
-			switch (genderResult%2) {
+			switch (genderResult) {
 			case 1: case 5: 
 				_gender="남"; 
 				ageResult0 = now - 1900-(ageResult1/10000);
