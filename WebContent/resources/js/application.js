@@ -14,10 +14,8 @@ var application = (function(){
 	}
 	return {
 		init : init,
-		getContextPath : getContextPath,
 		to_douglas : to_douglas,
 		go_home : go_home
-		
 	}
 })();
 
