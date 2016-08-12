@@ -31,23 +31,28 @@ var account = (function(){
 		},
 		spec : function(){
 			setAccountNo(Math.floor(Math.random()*899999)+100000);
+			setMoney (0);
 			document.querySelector('#result_account').innerHTML = getAccountNo();
 		},
 		deposit : function (){
-			var rest_money = getMoney();
 			var input_money = Number(document.querySelector('#money').value);
-			setMoney(input_money+rest_moeny);
-			document.querySelector('#rest_money').innerHTML=getMoeny();
+			var rest_money = getMoney();
+			console.log('인풋 머니 타입 체크  : '+(typeof input_money === 'number'));
+			console.log('인풋 머니 타입 체크  : '+(typeof rest_money === 'number'));
+			setMoney (input_money+rest_money);
+			console.log('입금액 : '+getMoney());
+			document.querySelector('#rest_money').innerHTML=getMoney();
 		},
 		withdraw : function (){
-			setMoney(document.querySelector('#money').value);
-			document.querySelector('#rest_money').innerHTML='-'+getMoney();
+			var input_money = Number(document.querySelector('#money').value);
+			var rest_money = getMoney();
+			setMoney (rest_money-input_money);
+			document.querySelector('#rest_money').innerHTML=getMoney();
 		}
 	};
 })();
 var member = (function(){
 	/*var _ssn,_name,_gender,_age;*/
-	var _age,_gender,_name,_ssn;
 	var setAge = function(age){this._age=age;}
 	var setGender = function(gender){this._gender=gender;}
 	var setSSN = function(ssn){this._ssn=ssn;}
