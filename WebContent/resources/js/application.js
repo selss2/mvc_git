@@ -1,4 +1,3 @@
-// var application = (function(){})();  IIFE 패턴
 var application = (function(){
 	var init = function(param) {
 		sessionStorage.setItem('context',param);

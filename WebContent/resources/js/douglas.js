@@ -1,3 +1,20 @@
+var util = (function(){
+	var _page, _directory
+	var setPage = function() {};
+	var setDirectory = function(directory) {this._directory=directory;}
+	return {
+		move : function(directory, page){
+			setDirectory(directory);
+			setPage(page);
+			location.href =
+				sessionStorage.getItem("context")+'/'+getDirectory()+'.do?page='+getPage();
+		},
+		isNumber : function (value) {
+			 return typeof value === 'number' && isFinite(value);
+		}
+	};
+})();
+
 var move = function(context,page){
 	location.href=context+'/douglas.do?page='+page;
 }
@@ -35,14 +52,28 @@ var account = (function(){
 			document.querySelector('#result_account').innerHTML = getAccountNo();
 		},
 		deposit : function (){
-			var input_money = Number(document.querySelector('#money').value);
-			var rest_money = getMoney();
-			console.log('인풋 머니 타입 체크  : '+(typeof input_money === 'number'));
-			console.log('인풋 머니 타입 체크  : '+(typeof rest_money === 'number'));
-			setMoney (input_money+rest_money);
-			console.log('입금액 : '+getMoney());
-			document.querySelector('#rest_money').innerHTML=getMoney();
-		},
+			var r_acc = document.querySelector('#result_account').innerText;
+				switch(typeof r_acc){
+				case 'number' : console.log('this is number type'); break;
+				case 'string' : console.log('this is string type'); break;
+				case 'undefined' : console.log('this is undefined type'); break;
+				default : console.log('type check fail !!');
+				}
+			if(typeof r_acc !== 'string'){
+				console.log('계좌번호 : '+r_acc);
+				alert('먼저 통장이 개설되어 있어야 합니다.');
+				// r_acc == null
+				// r_acc === undefined
+				}else{
+					var input_money = Number(document.querySelector('#money').value);
+					var rest_money = getMoney();
+					console.log('인풋 머니 타입 체크  : '+(typeof input_money === 'number'));
+					console.log('인풋 머니 타입 체크  : '+(typeof rest_money === 'number'));
+					setMoney (input_money+rest_money);
+					console.log('입금액 : '+getMoney());
+					document.querySelector('#rest_money').innerHTML=getMoney();
+				}
+			},
 		withdraw : function (){
 			var input_money = Number(document.querySelector('#money').value);
 			var rest_money = getMoney();
